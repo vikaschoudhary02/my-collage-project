@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A role-based virtual event hosting platform">
+  <title>EventSphere | Virtual Event Hosting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--ink:#17211f;--muted:#77827e;--line:#e8eeeb;--green:#176b55;--green-dark:#10523f;--mint:#e9f4ef;--bg:#f7f9f8;--white:#fff;--orange:#e9a15e;--shadow:0 16px 45px rgba(24,55,43,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px}button,input,select,textarea{font:inherit}button{cursor:pointer}h1,h2,h3,p{margin-top:0}h1,h2,h3,.sidebar-brand{font-family:Manrope,sans-serif} .hidden{display:none!important}.eyebrow{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--green)}
+.auth-shell{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:#fff}.auth-brand{background:linear-gradient(145deg,#123e34,#176b55 62%,#2b8068);color:#fff;padding:65px 11%;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.auth-brand:after{content:"";position:absolute;width:490px;height:490px;border:1px solid #ffffff20;border-radius:50%;right:-180px;bottom:-180px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff06}.brand-mark{height:40px;width:40px;border-radius:13px;background:#fff;color:var(--green);display:inline-grid;place-items:center;font:800 24px Manrope;box-shadow:0 6px 18px #092b2240}.brand-copy{max-width:480px;position:relative;z-index:1}.auth-brand .eyebrow{color:#b9ddce}.auth-brand h1{font-size:clamp(42px,5vw,68px);line-height:1.08;letter-spacing:-3px;margin:20px 0}.auth-brand h1 em{font-style:normal;color:#a8d7c3}.auth-brand p{color:#d4e8df;font-size:16px;line-height:1.8;max-width:390px}.auth-foot{font-size:12px;color:#c2ded2;position:relative;z-index:1}.auth-panel{padding:50px 9%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}.auth-card{width:100%;max-width:410px}.auth-heading{margin-bottom:30px}.auth-heading h2{font-size:27px;letter-spacing:-1px;margin:10px 0}.auth-heading p,.page-heading p{color:var(--muted);margin-bottom:0}.auth-form{display:grid;gap:17px}.auth-form label,.modal-form label{display:grid;gap:8px;font-weight:600;font-size:12px}.auth-form input,.auth-form select,.modal-form input,.modal-form select,.modal-form textarea,.toolbar select{width:100%;border:1px solid var(--line);background:#fff;border-radius:9px;padding:12px 13px;outline:none;color:var(--ink);transition:.2s}.auth-form input:focus,.modal-form input:focus,.modal-form textarea:focus,.toolbar select:focus{border-color:#65a58f;box-shadow:0 0 0 3px #176b5512}.btn{border:0;border-radius:9px;padding:12px 17px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:18px;transition:.2s}.btn-primary{background:var(--green);color:#fff}.btn-primary:hover{background:var(--green-dark);transform:translateY(-1px)}.btn-primary span{font-size:18px}.btn-full{width:100%;margin-top:5px}.btn-outline{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn-outline:hover{border-color:var(--green);color:var(--green)}.auth-switch{text-align:center;color:var(--muted);margin:22px 0}.auth-switch button,.text-btn{border:0;background:none;color:var(--green);font-weight:700}.demo-box{padding:15px 17px;background:#f5f8f6;border:1px solid var(--line);border-radius:10px;font-size:11px;color:#64716b}.demo-box strong{color:var(--ink);font-size:12px}.demo-box p{margin:7px 0 0}.auth-copyright{position:absolute;bottom:20px;color:#9aa49f;font-size:10px}.auth-mobile-brand{display:none}
+.app-shell{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:245px;background:#fff;border-right:1px solid var(--line);padding:27px 17px;display:flex;flex-direction:column;z-index:5}.sidebar-brand{display:flex;align-items:center;gap:11px;font-size:16px;font-weight:800;padding:0 10px 40px}.sidebar-brand small{display:block;font:700 8px 'DM Sans';letter-spacing:1.5px;color:#99a49e;margin-top:3px}.sidebar-brand .brand-mark{background:var(--green);color:#fff}.workspace-label{font-size:9px;letter-spacing:1.4px;color:#a1aaa5;font-weight:700;padding:0 12px 12px}.side-nav{display:grid;gap:5px}.nav-item{width:100%;text-align:left;border:0;background:transparent;color:#78837d;padding:12px;border-radius:8px;font-weight:600;display:flex;align-items:center;gap:13px}.nav-item:hover,.nav-item.active{background:var(--mint);color:var(--green)}.nav-icon{font-size:17px;width:18px;text-align:center}.sidebar-bottom{margin-top:auto}.help-card{background:#f4f8f5;border-radius:10px;padding:15px;margin:0 3px 18px}.help-icon{color:var(--green);font-size:18px}.help-card strong{display:block;margin:8px 0 4px}.help-card p{font-size:11px;color:var(--muted);line-height:1.5;margin:0}.logout-btn{border-top:1px solid var(--line);border-radius:0;padding-top:18px}.main-area{margin-left:245px;min-height:100vh}.topbar{height:75px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 42px;position:sticky;top:0;z-index:4}.breadcrumb{font-size:12px;color:#89938e}.breadcrumb span{padding:0 9px;color:#c3cbc6}.breadcrumb strong{color:var(--ink)}.topbar-right{display:flex;align-items:center;gap:22px}.icon-button{border:0;background:none;font-size:21px;color:#67736c;position:relative}.icon-button i{position:absolute;width:6px;height:6px;background:#e68a5a;border-radius:50%;right:1px;top:2px}.user-chip{display:flex;align-items:center;gap:9px}.avatar{width:34px;height:34px;border-radius:50%;background:#e3f0e9;color:var(--green);display:grid;place-items:center;font-weight:800}.user-chip strong,.user-chip small{display:block}.user-chip strong{font-size:11px}.user-chip small{font-size:10px;color:var(--muted);text-transform:capitalize;margin-top:3px}.mobile-menu{display:none}.page-content{padding:37px 42px 55px;max-width:1500px;margin:auto}.view{display:none}.view.active{display:block}.page-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.page-heading h1{font-size:29px;letter-spacing:-1.2px;margin:7px 0 5px}.page-heading p{font-size:12px}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:23px}.stat-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:19px 20px;box-shadow:0 4px 14px #163d2c05}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px;font-weight:600}.stat-icon{width:32px;height:32px;border-radius:9px;background:var(--mint);color:var(--green);display:grid;place-items:center;font-size:16px}.stat-value{font:800 27px Manrope;margin:12px 0 4px;letter-spacing:-1px}.stat-note{font-size:10px;color:#9aa49f}.dashboard-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:17px}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px;min-width:0}.panel-heading{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:19px}.panel-heading h3{font-size:14px;margin:0 0 5px}.panel-heading p{font-size:10px;color:var(--muted);margin:0}.live-dot{font-size:9px;color:var(--green);font-weight:800;letter-spacing:1px}.live-dot:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#58b48b;margin-right:6px;vertical-align:1px}.event-list{display:grid;gap:12px}.event-mini{display:flex;align-items:center;gap:13px;padding:12px;border:1px solid #edf1ee;border-radius:9px}.date-tile{width:47px;min-width:47px;height:49px;background:#f0f6f2;border-radius:8px;display:grid;place-content:center;text-align:center;color:var(--green)}.date-tile b{font:800 18px Manrope;line-height:1}.date-tile small{font-size:8px;font-weight:800;letter-spacing:1px;margin-top:3px}.event-mini-info{flex:1;min-width:0}.event-mini-info strong{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.event-mini-info small{display:block;color:var(--muted);font-size:10px;margin-top:5px}.event-mini .category-tag{font-size:9px}.activity-list{display:grid}.activity-item{display:flex;gap:11px;padding:12px 0;border-bottom:1px solid #f0f2f1}.activity-item:last-child{border:0}.activity-dot{width:8px;height:8px;border-radius:50%;background:#83bda4;margin-top:4px;flex:none}.activity-item p{font-size:10px;line-height:1.5;margin:0;color:#59655f}.activity-item small{display:block;color:#a0aaa4;font-size:9px;margin-top:4px}.toolbar{display:flex;gap:11px;margin-bottom:18px}.search-box{background:#fff;border:1px solid var(--line);border-radius:9px;display:flex;align-items:center;gap:9px;padding:0 12px;flex:1;max-width:440px;color:#9aa49f}.search-box input{border:0;outline:0;padding:11px 0;width:100%;font-size:11px}.toolbar select{width:auto;min-width:135px;font-size:11px;padding:10px}.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.event-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.2s}.event-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.event-cover{height:112px;padding:15px;display:flex;justify-content:space-between;align-items:flex-start;background:linear-gradient(135deg,#dceee5,#b6d9c8);position:relative;overflow:hidden}.event-cover:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff90;border-radius:50%;right:-38px;top:-65px;box-shadow:0 0 0 25px #ffffff30,0 0 0 50px #ffffff20}.event-cover.cat-Business{background:linear-gradient(135deg,#f5e6d6,#e9c49e)}.event-cover.cat-Design{background:linear-gradient(135deg,#e8e2f4,#c7b9e4)}.event-cover.cat-Education{background:linear-gradient(135deg,#dceaf6,#b8d1e9)}.event-cover.cat-Community{background:linear-gradient(135deg,#f5e2e3,#e9bdc0)}.category-tag,.status{display:inline-flex;padding:5px 8px;border-radius:20px;background:#ffffffc9;color:#365b4b;font-size:9px;font-weight:700;position:relative;z-index:1}.event-cover-symbol{font:800 38px Manrope;color:#ffffffb8;position:relative;z-index:1}.event-card-body{padding:16px}.event-card-body h3{font-size:13px;margin:0 0 8px;line-height:1.4}.event-description{color:var(--muted);font-size:10px;line-height:1.6;min-height:32px}.event-meta{display:flex;gap:12px;color:#78847d;font-size:9px;margin:12px 0}.event-card-footer{border-top:1px solid #f0f2f1;padding-top:12px;display:flex;justify-content:space-between;align-items:center}.event-card-footer small{color:var(--muted);font-size:9px}.event-actions{display:flex;gap:6px}.small-btn{border:1px solid var(--line);background:#fff;border-radius:7px;padding:7px 9px;font-size:9px;font-weight:700;color:var(--green)}.small-btn:hover{background:var(--mint)}.status{position:static;background:#edf6f0;color:#28724f}.status.pending{background:#fff4df;color:#9a681d}.status.cancelled{background:#fcebea;color:#ad514c}.status.completed{background:#eef0f1;color:#68736d}.table-panel{padding:0;overflow:hidden}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}th{font-size:9px;letter-spacing:.8px;color:#9aa49f;background:#fafcfb;padding:14px 18px}td{font-size:10px;padding:15px 18px;border-top:1px solid #eff2f0;color:#66726b}td strong{color:var(--ink);font-size:10px}.person-cell{display:flex;align-items:center;gap:9px}.person-cell .avatar{width:29px;height:29px;font-size:10px}.empty-state{padding:35px;text-align:center;color:var(--muted);font-size:12px;grid-column:1/-1}.report-bars{display:grid;gap:17px}.bar-row{display:grid;grid-template-columns:85px 1fr 25px;align-items:center;gap:10px;font-size:10px;color:var(--muted)}.bar-track{height:8px;background:#edf2ef;border-radius:20px;overflow:hidden}.bar-fill{height:100%;background:#4e9b7d;border-radius:20px}.category-report{display:grid;gap:12px}.category-row{display:flex;justify-content:space-between;align-items:center;font-size:10px}.category-row span:first-child{color:#66726b}.category-row strong{color:var(--ink)}.toast{position:fixed;right:25px;top:22px;z-index:20;background:#173e32;color:#fff;padding:13px 18px;border-radius:9px;box-shadow:var(--shadow);font-size:12px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translateY(0)}
+.modal-backdrop{position:fixed;inset:0;background:#13231f80;z-index:10;display:grid;place-items:center;padding:20px;overflow:auto}.modal{background:#fff;width:min(570px,100%);border-radius:15px;padding:25px;box-shadow:0 25px 80px #0b211b40;max-height:90vh;overflow:auto}.modal-heading{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}.modal-heading h2{font-size:21px;margin:6px 0 0}.close-btn{border:0;background:#f1f4f2;border-radius:50%;width:30px;height:30px;font-size:20px;color:#627068}.modal-form{display:grid;gap:15px}.modal-form label{font-size:11px}.modal-form input,.modal-form select,.modal-form textarea{font-size:11px}.modal-form textarea{resize:vertical}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:7px}.detail-close{float:right}.detail-modal{width:min(540px,100%);padding:28px}.detail-hero{margin:15px 0;padding:23px;border-radius:12px;background:linear-gradient(135deg,#dceee5,#b6d9c8)}.detail-hero h2{font-size:23px;margin:12px 0 5px}.detail-copy{font-size:12px;line-height:1.7;color:#66736c}.detail-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:17px 0}.detail-fact{background:#f6f8f7;padding:12px;border-radius:8px}.detail-fact small{display:block;color:var(--muted);font-size:9px;margin-bottom:5px}.detail-fact strong{font-size:11px}.detail-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+@media(max-width:1100px){.sidebar{width:215px}.main-area{margin-left:215px}.page-content{padding:30px 25px}.topbar{padding:0 25px}.events-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.auth-shell{grid-template-columns:1fr}.auth-brand{display:none}.auth-panel{min-height:100vh;padding:25px}.auth-mobile-brand{display:flex;align-items:center;gap:10px;margin-bottom:55px;align-self:flex-start}.auth-mobile-brand .brand-mark{background:var(--green);color:white}.auth-copyright{bottom:10px}.sidebar{transform:translateX(-100%);transition:.25s;width:250px;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.main-area{margin-left:0}.topbar{height:65px;padding:0 17px}.mobile-menu{display:block;border:0;background:none;font-size:20px;color:var(--ink)}.breadcrumb{margin-right:auto;margin-left:12px}.topbar-right{gap:12px}.user-chip>div:last-child{display:none}.page-content{padding:25px 16px}.page-heading{align-items:flex-start;gap:12px}.page-heading h1{font-size:25px}.page-heading>.btn{padding:10px;font-size:10px}.dashboard-grid{grid-template-columns:1fr}.stats-grid{gap:9px}.stat-card{padding:14px}.stat-value{font-size:23px}.events-grid{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}.search-box{max-width:none;flex-basis:100%}.toolbar select{flex:1}.panel{padding:16px}.table-panel{padding:0}.form-row{grid-template-columns:1fr}.auth-heading h2{font-size:24px}}
+@media(min-width:761px) and (max-width:900px){.dashboard-grid{grid-template-columns:1fr}.events-grid{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <main id="authScreen" class="auth-shell">
+    <section class="auth-brand">
+      <div class="brand-mark">E</div>
+      <div class="brand-copy">
+        <span class="eyebrow">EVENT MANAGEMENT, SIMPLIFIED</span>
+        <h1>Bring people<br><em>together.</em></h1>
+        <p>Plan memorable virtual experiences, manage registrations, and keep every event running smoothly.</p>
+      </div>
+      <div class="auth-foot">Plan better. Connect anywhere.</div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-mobile-brand"><span class="brand-mark">E</span><strong>EventSphere</strong></div>
+      <div class="auth-card">
+        <div class="auth-heading">
+          <span class="eyebrow">WELCOME TO EVENTSPHERE</span>
+          <h2 id="authTitle">Sign in to your account</h2>
+          <p id="authSubtitle">Enter your details to access your workspace.</p>
+        </div>
+        <form id="loginForm" class="auth-form">
+          <label>Email address<input id="loginEmail" type="email" placeholder="you@example.com" required autocomplete="email"></label>
+          <label>Password<input id="loginPassword" type="password" placeholder="Enter your password" required minlength="4" autocomplete="current-password"></label>
+          <button class="btn btn-primary btn-full" type="submit">Sign in <span>→</span></button>
+        </form>
+        <form id="registerForm" class="auth-form hidden">
+          <label>Full name<input id="registerName" type="text" placeholder="Your full name" required minlength="2"></label>
+          <label>Email address<input id="registerEmail" type="email" placeholder="you@example.com" required></label>
+          <label>Password<input id="registerPassword" type="password" placeholder="At least 4 characters" required minlength="4"></label>
+          <label>Your role<select id="registerRole"><option value="attendee">Attendee</option><option value="organizer">Organizer</option></select></label>
+          <button class="btn btn-primary btn-full" type="submit">Create account <span>→</span></button>
+        </form>
+        <p class="auth-switch"><span id="authSwitchText">New to EventSphere?</span> <button id="authSwitch" type="button">Create an account</button></p>
+        <div class="demo-box">
+          <strong>Quick demo access</strong>
+          <p>Admin: demo.admin@eventsphere.demo / demo123 <button type="button" class="text-btn demo-fill" data-email="demo.admin@eventsphere.demo" data-pass="demo123">Use</button></p>
+          <p>Organizer: demo.organizer@eventsphere.demo / demo123 <button type="button" class="text-btn demo-fill" data-email="demo.organizer@eventsphere.demo" data-pass="demo123">Use</button></p>
+          <p>Attendee: demo.attendee@eventsphere.demo / demo123 <button type="button" class="text-btn demo-fill" data-email="demo.attendee@eventsphere.demo" data-pass="demo123">Use</button></p>
+        </div>
+      </div>
+      <span class="auth-copyright">© 2026 EventSphere. All rights reserved.</span>
+    </section>
+  </main>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand"><span class="brand-mark">E</span><span>EventSphere<small>VIRTUAL EVENTS</small></span></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="dashboard"><span class="nav-icon">▦</span> Overview</button>
+        <button class="nav-item" data-view="events"><span class="nav-icon">◫</span> Events</button>
+        <button class="nav-item" data-view="bookings"><span class="nav-icon">▤</span> Registrations</button>
+        <button class="nav-item admin-only" data-view="users"><span class="nav-icon">♙</span> Users</button>
+        <button class="nav-item" data-view="reports"><span class="nav-icon">▥</span> Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Need a hand?</strong><p>Manage your events with confidence.</p></div>
+        <button class="nav-item logout-btn" id="logoutBtn"><span class="nav-icon">↪</span> Sign out</button>
+      </div>
+    </aside>
+
+    <section class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumbCurrent">Overview</strong></div>
+        <div class="topbar-right">
+          <button class="icon-button" id="notificationBtn" aria-label="Notifications">♧<i></i></button>
+          <div class="user-chip"><div class="avatar" id="userAvatar">U</div><div><strong id="userName">User</strong><small id="userRole">Attendee</small></div></div>
+        </div>
+      </header>
+      <div class="page-content">
+        <section id="dashboardView" class="view active">
+          <div class="page-heading">
+            <div><span class="eyebrow" id="welcomeEyebrow">YOUR EVENT WORKSPACE</span><h1 id="welcomeTitle">Good evening!</h1><p>Here’s what’s happening across your events.</p></div>
+            <button class="btn btn-primary organizer-only" id="quickCreateBtn">＋ Create event</button>
+          </div>
+          <div class="stats-grid" id="statsGrid"></div>
+          <div class="dashboard-grid"> 
+            <section class="panel upcoming-panel"><div class="panel-heading"><div><h3>Featured events</h3><p>Discover what’s coming up next</p></div><button class="text-btn" data-goto="events">View all →</button></div><div id="featuredEvents" class="event-list"></div></section>
+            <section class="panel activity-panel"><div class="panel-heading"><div><h3>Recent activity</h3><p>Latest platform updates</p></div><span class="live-dot">LIVE</span></div><div id="activityList" class="activity-list"></div></section>
+          </div>
+        </section>
+
+        <section id="eventsView" class="view">
+          <div class="page-heading"><div><span class="eyebrow">DISCOVER & ORGANIZE</span><h1>Events</h1><p>Explore events or manage the ones you host.</p></div><button class="btn btn-primary organizer-only" id="createEventBtn">＋ Create event</button></div>
+          <div class="toolbar"><div class="search-box"><span>⌕</span><input id="eventSearch" type="search" placeholder="Search events by name or category..."></div><select id="eventFilter"><option value="all">All statuses</option><option value="upcoming">Upcoming</option><option value="live">Live</option><option value="completed">Completed</option></select><select id="categoryFilter"><option value="all">All categories</option><option>Technology</option><option>Business</option><option>Design</option><option>Education</option><option>Community</option></select></div>
+          <div id="eventsGrid" class="events-grid"></div>
+        </section>
+
+        <section id="bookingsView" class="view">   
+          <div class="page-heading"><div><span class="eyebrow">ATTENDANCE MANAGEMENT</span><h1>Registrations</h1><p>Track event requests and booking statuses.</p></div></div>
+          <div class="toolbar"><div class="search-box"><span>⌕</span><input id="bookingSearch" type="search" placeholder="Search by attendee or event..."></div><select id="bookingFilter"><option value="all">All statuses</option><option>Pending</option><option>Confirmed</option><option>Cancelled</option></select></div>
+          <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>ATTENDEE</th><th>EVENT</th><th>DATE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="bookingsTable"></tbody></table></div></div>
+        </section>
+
+        <section id="usersView" class="view">
+          <div class="page-heading"><div><span class="eyebrow">PLATFORM ADMINISTRATION</span><h1>Users</h1><p>Review registered accounts and platform roles.</p></div></div>
+          <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>USER</th><th>EMAIL</th><th>ROLE</th><th>JOINED</th></tr></thead><tbody id="usersTable"></tbody></table></div></div>
+        </section>
+
+        <section id="reportsView" class="view">
+          <div class="page-heading"><div><span class="eyebrow">INSIGHTS & PERFORMANCE</span><h1>Reports</h1><p>A quick overview of platform activity.</p></div><button class="btn btn-outline" id="exportReportBtn">↓ Export CSV</button></div>
+          <div class="stats-grid" id="reportStats"></div>
+          <div class="dashboard-grid"><section class="panel"><div class="panel-heading"><div><h3>Registration overview</h3><p>Bookings by status</p></div></div><div id="reportBars" class="report-bars"></div></section><section class="panel"><div class="panel-heading"><div><h3>Event categories</h3><p>Events grouped by category</p></div></div><div id="categoryReport" class="category-report"></div></section></div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="eventModal">
+    <section class="modal">
+      <div class="modal-heading"><div><span class="eyebrow">EVENT DETAILS</span><h2 id="eventModalTitle">Create an event</h2></div><button class="close-btn" data-close="eventModal" aria-label="Close">×</button></div>
+      <form id="eventForm" class="modal-form">
+        <input type="hidden" id="eventId">
+        <label>Event title<input id="eventTitle" required maxlength="80" placeholder="e.g. Future of Technology Summit"></label>
+        <div class="form-row"><label>Category<select id="eventCategory" required><option>Technology</option><option>Business</option><option>Design</option><option>Education</option><option>Community</option></select></label><label>Event date<input id="eventDate" type="date" required></label></div>
+        <div class="form-row"><label>Start time<input id="eventTime" type="time" required></label><label>Capacity<input id="eventCapacity" type="number" min="1" max="10000" value="100" required></label></div>
+        <label>Meeting link<input id="eventLink" type="url" placeholder="https://... (optional)"></label>
+        <label>Description<textarea id="eventDescription" rows="3" maxlength="500" required placeholder="What will attendees learn or experience?"></textarea></label>
+        <div class="modal-actions"><button type="button" class="btn btn-outline" data-close="eventModal">Cancel</button><button class="btn btn-primary" type="submit">Save event</button></div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detailModal"><section class="modal detail-modal"><button class="close-btn detail-close" data-close="detailModal">×</button><div id="eventDetailContent"></div></section></div>
+  <script>
+/* EventSphere demo application
+   Front-end demonstration: data is stored in this browser using localStorage.
+   For production use, connect authentication and data operations to a secure backend. */
+const DB_KEY = "eventsphere_v1";
+const $ = (id) => document.getElementById(id);
+const today = new Date();
+const dateOffset = (days) => { const d = new Date(); d.setDate(d.getDate()+days); return d.toISOString().slice(0,10); };
+const seed = {
+  users:[
+    {id:"u-admin",name:"Vikas Choudhary",email:"Vikas@1.admin",password:"demo123",role:"admin",joined:dateOffset(-90)},
+    {id:"u-org",name:"Dipanshu",email:"Dipanshu@2.organiser",password:"demo123",role:"organizer",joined:dateOffset(-35)},
+    {id:"u-att",name:"SK Shoaib Badsha",email:"Shoaib@3.attendee",password:"demo123",role:"attendee",joined:dateOffset(-12)},
+    {id:"u-demo-admin",name:"Demo Admin",email:"demo.admin@eventsphere.demo",password:"demo123",role:"admin",joined:dateOffset(-20)},
+    {id:"u-demo-org",name:"Demo Organizer",email:"demo.organizer@eventsphere.demo",password:"demo123",role:"organizer",joined:dateOffset(-15)},
+    {id:"u-demo-att",name:"Demo Attendee",email:"demo.attendee@eventsphere.demo",password:"demo123",role:"attendee",joined:dateOffset(-7)}
+  ],
+  events:[
+    {id:"e1",title:"Future of Technology Summit",category:"Technology",date:dateOffset(5),time:"10:00",capacity:250,link:"",description:"Explore the technologies shaping tomorrow with industry experts and innovators.",organizerId:"u-org",status:"upcoming"},
+    {id:"e2",title:"Creative Business Masterclass",category:"Business",date:dateOffset(9),time:"14:30",capacity:120,link:"",description:"Practical strategies for building a resilient and creative business.",organizerId:"u-org",status:"upcoming"},
+    {id:"e3",title:"Design Thinking Workshop",category:"Design",date:dateOffset(14),time:"11:00",capacity:80,link:"",description:"Learn a human-centered approach to solving complex problems.",organizerId:"u-org",status:"upcoming"},
+    {id:"e4",title:"Learning Without Limits",category:"Education",date:dateOffset(-5),time:"16:00",capacity:200,link:"",description:"A conversation about accessible and engaging digital learning.",organizerId:"u-org",status:"completed"}
+  ],
+  bookings:[
+    {id:"b1",eventId:"e1",userId:"u-att",status:"Confirmed",created:dateOffset(-1)},
+    {id:"b2",eventId:"e2",userId:"u-att",status:"Pending",created:dateOffset(0)}
+  ],
+  activity:[{text:"Welcome to EventSphere. Your workspace is ready.",date:new Date().toISOString()},{text:"Future of Technology Summit is open for registration.",date:new Date().toISOString()}]
+};
+let db = loadDB();
+let currentUser = null;
+let toastTimer;
+function loadDB(){let data;try{data=JSON.parse(localStorage.getItem(DB_KEY))||structuredClone(seed)}catch{data=structuredClone(seed)}
+ /* Make sure the demo accounts always exist, even if older data is stored in this browser */
+ seed.users.forEach(s=>{const i=data.users.findIndex(u=>u.id===s.id||u.email.toLowerCase()===s.email.toLowerCase());if(i===-1)data.users.push({...s});else data.users[i]={...data.users[i],email:s.email,password:s.password,role:s.role}});
+ return data}
+/* Click "Use" next to a demo account to fill the sign-in form */
+document.querySelectorAll(".demo-fill").forEach(b=>b.addEventListener("click",()=>{switchAuth(false);$("loginEmail").value=b.dataset.email;$("loginPassword").value=b.dataset.pass;$("loginPassword").focus()}));
+function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(db))}
+function escapeHTML(value=""){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function initials(name="User"){return name.split(/\s+/).map(x=>x[0]).slice(0,2).join("").toUpperCase()}
+function formatDate(value){if(!value)return "Date TBC";return new Date(value+"T00:00:00").toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}
+function addActivity(text){db.activity.unshift({text,date:new Date().toISOString()});db.activity=db.activity.slice(0,12);saveDB()}
+function notify(message){const el=$("toast");el.textContent=message;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2800)}
+function roleLabel(role){return role.charAt(0).toUpperCase()+role.slice(1)}
+function canManageEvents(){return currentUser && ["admin","organizer"].includes(currentUser.role)}
+function visibleEvents(){return currentUser.role==="organizer"?db.events.filter(e=>e.organizerId===currentUser.id):db.events}
+function eventStatus(event){if(event.status==="completed"||event.date<dateOffset(0))return "completed";if(event.date===dateOffset(0))return "live";return "upcoming"}
+function bookingEvent(id){return db.events.find(e=>e.id===id)}
+function bookingUser(id){return db.users.find(u=>u.id===id)}
+function switchAuth(register){$("loginForm").classList.toggle("hidden",register);$("registerForm").classList.toggle("hidden",!register);$("authTitle").textContent=register?"Create your account":"Sign in to your account";$("authSubtitle").textContent=register?"Join EventSphere and start connecting.":"Enter your details to access your workspace.";$("authSwitchText").textContent=register?"Already have an account?":"New to EventSphere?";$("authSwitch").textContent=register?"Sign in":"Create an account"}
+$("authSwitch").addEventListener("click",()=>switchAuth(!$("registerForm").classList.contains("hidden")));
+$("loginForm").addEventListener("submit",e=>{e.preventDefault();const email=$("loginEmail").value.trim().toLowerCase(),pass=$("loginPassword").value;const user=db.users.find(u=>u.email.toLowerCase()===email&&u.password===pass);if(!user){notify("Incorrect email or password.");return}login(user)});
+$("registerForm").addEventListener("submit",e=>{e.preventDefault();const name=$("registerName").value.trim(),email=$("registerEmail").value.trim().toLowerCase(),password=$("registerPassword").value,role=$("registerRole").value;if(db.users.some(u=>u.email.toLowerCase()===email)){notify("An account with this email already exists.");return}const user={id:"u"+Date.now(),name,email,password,role,joined:dateOffset(0)};db.users.push(user);saveDB();addActivity(`${name} joined as an ${role}.`);login(user);notify("Account created successfully!")});
+function login(user){currentUser=user;$("authScreen").classList.add("hidden");$("app").classList.remove("hidden");$("userName").textContent=user.name;$("userRole").textContent=roleLabel(user.role);$("userAvatar").textContent=initials(user.name);document.querySelectorAll(".admin-only").forEach(el=>el.classList.toggle("hidden",user.role!=="admin"));document.querySelectorAll(".organizer-only").forEach(el=>el.classList.toggle("hidden",!canManageEvents()));if(user.role==="attendee"){$("bookingsView").querySelector(".page-heading p").textContent="Review your event registrations and booking statuses."}showView("dashboard");renderAll()}
+$("logoutBtn").addEventListener("click",()=>{currentUser=null;$("app").classList.add("hidden");$("authScreen").classList.remove("hidden");$("loginPassword").value="";switchAuth(false)});
+function showView(name){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$(name+"View").classList.add("active");document.querySelectorAll(".nav-item[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));$("breadcrumbCurrent").textContent={dashboard:"Overview",events:"Events",bookings:"Registrations",users:"Users",reports:"Reports"}[name]||name;renderView(name);$("sidebar").classList.remove("open")}
+document.querySelectorAll(".nav-item[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
+document.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.goto)));
+$("mobileMenu").addEventListener("click",()=>$("sidebar").classList.toggle("open"));
+$("notificationBtn").addEventListener("click",()=>notify("You’re all caught up!"));
+$("quickCreateBtn").addEventListener("click",()=>openEventModal());
+$("createEventBtn").addEventListener("click",()=>openEventModal());
+function renderAll(){renderDashboard();renderEvents();renderBookings();renderUsers();renderReports()}
+function renderView(name){({dashboard:renderDashboard,events:renderEvents,bookings:renderBookings,users:renderUsers,reports:renderReports}[name]||(()=>{}))()}
+function statCard(label,value,note,icon){return `<article class="stat-card"><div class="stat-top"><span>${label}</span><span class="stat-icon">${icon}</span></div><div class="stat-value">${value}</div><div class="stat-note">${note}</div></article>`}
+function renderDashboard(){
+ const events=visibleEvents(),bookings=currentUser.role==="attendee"?db.bookings.filter(b=>b.userId===currentUser.id):db.bookings.filter(b=>events.some(e=>e.id===b.eventId));
+ const confirmed=bookings.filter(b=>b.status==="Confirmed").length;
+ const upcoming=events.filter(e=>eventStatus(e)==="upcoming").length;
+ $("welcomeTitle").textContent=`Good ${new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, ${currentUser.name.split(" ")[0]}!`;
+ $("statsGrid").innerHTML=[statCard(currentUser.role==="attendee"?"My registrations":"Total events",currentUser.role==="attendee"?bookings.length:events.length,"Across your workspace","◫"),statCard("Upcoming events",upcoming,"Ready to explore","◷"),statCard("Confirmed bookings",confirmed,"Successful registrations","✓"),statCard("Total users",currentUser.role==="admin"?db.users.length: "—",currentUser.role==="admin"?"Registered accounts":"Connect with your community","♙")].join("");
+ const featured=[...events].filter(e=>eventStatus(e)!=="completed").sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
+ $("featuredEvents").innerHTML=featured.length?featured.map(e=>`<div class="event-mini"><div class="date-tile"><b>${new Date(e.date+"T00:00:00").getDate()}</b><small>${new Date(e.date+"T00:00:00").toLocaleDateString("en",{month:"short"}).toUpperCase()}</small></div><div class="event-mini-info"><strong>${escapeHTML(e.title)}</strong><small>${escapeHTML(e.category)} · ${e.time}</small></div><span class="status">${eventStatus(e)}</span></div>`).join(""):`<div class="empty-state">No upcoming events yet.</div>`;
+ $("activityList").innerHTML=db.activity.slice(0,5).map(a=>`<div class="activity-item"><span class="activity-dot"></span><div><p>${escapeHTML(a.text)}</p><small>${new Date(a.date).toLocaleString()}</small></div></div>`).join("");
+}
+function eventCard(e){const count=db.bookings.filter(b=>b.eventId===e.id&&b.status!=="Cancelled").length;const mine=db.bookings.find(b=>b.eventId===e.id&&b.userId===currentUser.id);return `<article class="event-card"><div class="event-cover cat-${escapeHTML(e.category)}"><span class="category-tag">${escapeHTML(e.category)}</span><span class="event-cover-symbol">${({Technology:"⌘",Business:"↗",Design:"✳",Education:"▤",Community:"◎"})[e.category]||"✦"}</span></div><div class="event-card-body"><h3>${escapeHTML(e.title)}</h3><p class="event-description">${escapeHTML(e.description)}</p><div class="event-meta"><span>◷ ${formatDate(e.date)}</span><span>◉ ${e.time}</span></div><div class="event-card-footer"><small>${count}/${e.capacity} registered</small><div class="event-actions"><button class="small-btn" data-detail="${e.id}">Details</button>${canManageEvents()&& (currentUser.role==="admin"||e.organizerId===currentUser.id)?`<button class="small-btn" data-edit="${e.id}">Edit</button><button class="small-btn" data-delete="${e.id}">Delete</button>`:mine?`<span class="status ${mine.status.toLowerCase()}">${mine.status}</span>`:`<button class="small-btn" data-book="${e.id}" ${eventStatus(e)==="completed"?"disabled":""}>Register</button>`}</div></div></div></article>`}
+function renderEvents(){const search=($("eventSearch").value||"").toLowerCase(),status=$("eventFilter").value,cat=$("categoryFilter").value;const events=visibleEvents().filter(e=>(e.title+" "+e.category+" "+e.description).toLowerCase().includes(search)&&(status==="all"||eventStatus(e)===status)&&(cat==="all"||e.category===cat));$("eventsGrid").innerHTML=events.length?events.map(eventCard).join(""):`<div class="empty-state">No events match your search.</div>`}
+["eventSearch","eventFilter","categoryFilter"].forEach(id=>$(id).addEventListener(id==="eventSearch"?"input":"change",renderEvents));
+$("eventsGrid").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.detail)showEventDetail(b.dataset.detail);if(b.dataset.edit)openEventModal(b.dataset.edit);if(b.dataset.delete)deleteEvent(b.dataset.delete);if(b.dataset.book)bookEvent(b.dataset.book)});
+function openEventModal(id=null){if(!canManageEvents())return;const event=db.events.find(e=>e.id===id);$("eventForm").reset();$("eventId").value=event?.id||"";$("eventModalTitle").textContent=event?"Edit event":"Create an event";$("eventTitle").value=event?.title||"";$("eventCategory").value=event?.category||"Technology";$("eventDate").value=event?.date||dateOffset(1);$("eventDate").min=dateOffset(0);$("eventTime").value=event?.time||"10:00";$("eventCapacity").value=event?.capacity||100;$("eventLink").value=event?.link||"";$("eventDescription").value=event?.description||"";$("eventModal").classList.remove("hidden")}
+$("eventForm").addEventListener("submit",e=>{e.preventDefault();const id=$("eventId").value;const old=db.events.find(x=>x.id===id);const data={id:id||"e"+Date.now(),title:$("eventTitle").value.trim(),category:$("eventCategory").value,date:$("eventDate").value,time:$("eventTime").value,capacity:Number($("eventCapacity").value),link:$("eventLink").value.trim(),description:$("eventDescription").value.trim(),organizerId:old?.organizerId||currentUser.id,status:old?.status||"upcoming"};if(data.date<dateOffset(0)){notify("Please choose today or a future date.");return}if(!data.title||!data.description||data.capacity<1){notify("Please complete all required fields.");return}if(old){Object.assign(old,data);addActivity(`Event updated: ${data.title}.`)}else{db.events.unshift(data);addActivity(`New event created: ${data.title}.`)}saveDB();$("eventModal").classList.add("hidden");renderAll();notify(old?"Event updated successfully.":"Event created successfully!")});
+function deleteEvent(id){const e=db.events.find(x=>x.id===id);if(!e||!confirm(`Delete "${e.title}" and its registrations?`))return;db.events=db.events.filter(x=>x.id!==id);db.bookings=db.bookings.filter(b=>b.eventId!==id);addActivity(`Event deleted: ${e.title}.`);saveDB();renderAll();notify("Event deleted.") }
+function bookEvent(id){const event=db.events.find(e=>e.id===id);if(!event)return;if(db.bookings.some(b=>b.eventId===id&&b.userId===currentUser.id&&b.status!=="Cancelled")){notify("You already have a registration for this event.");return}const count=db.bookings.filter(b=>b.eventId===id&&b.status!=="Cancelled").length;if(count>=event.capacity){notify("Sorry, this event is full.");return}db.bookings.push({id:"b"+Date.now(),eventId:id,userId:currentUser.id,status:"Pending",created:dateOffset(0)});addActivity(`${currentUser.name} requested a place at ${event.title}.`);saveDB();renderAll();notify("Registration request submitted!")}
+function showEventDetail(id){const e=db.events.find(x=>x.id===id);if(!e)return;const count=db.bookings.filter(b=>b.eventId===id&&b.status!=="Cancelled").length;const mine=db.bookings.find(b=>b.eventId===id&&b.userId===currentUser.id&&b.status!=="Cancelled");$("eventDetailContent").innerHTML=`<div class="detail-hero"><span class="category-tag">${escapeHTML(e.category)}</span><h2>${escapeHTML(e.title)}</h2><span class="status">${eventStatus(e)}</span></div><p class="detail-copy">${escapeHTML(e.description)}</p><div class="detail-facts"><div class="detail-fact"><small>DATE</small><strong>${formatDate(e.date)}</strong></div><div class="detail-fact"><small>START TIME</small><strong>${e.time}</strong></div><div class="detail-fact"><small>CAPACITY</small><strong>${count} / ${e.capacity} registered</strong></div><div class="detail-fact"><small>HOST</small><strong>${escapeHTML(bookingUser(e.organizerId)?.name||"EventSphere")}</strong></div></div><div class="detail-actions">${mine?`<span class="status ${mine.status.toLowerCase()}">Your request: ${mine.status}</span>`:currentUser.role==="attendee"&&eventStatus(e)!=="completed"?`<button class="btn btn-primary" data-detail-book="${e.id}">Register for event →</button>`:""}${e.link?`<a class="btn btn-outline" href="${escapeHTML(e.link)}" target="_blank" rel="noopener">Open event link ↗</a>`:""}</div>`;$("detailModal").classList.remove("hidden")}
+$("eventDetailContent").addEventListener("click",e=>{const b=e.target.closest("[data-detail-book]");if(b){bookEvent(b.dataset.detailBook);$("detailModal").classList.add("hidden")}});
+function renderBookings(){const search=($("bookingSearch").value||"").toLowerCase(),filter=$("bookingFilter").value;let rows=db.bookings.filter(b=>{const event=bookingEvent(b.eventId),user=bookingUser(b.userId);if(currentUser.role==="attendee"&&b.userId!==currentUser.id)return false;if(currentUser.role==="organizer"&&(!event||event.organizerId!==currentUser.id))return false;return (`${user?.name||""} ${event?.title||""}`).toLowerCase().includes(search)&&(filter==="all"||b.status===filter)});$("bookingsTable").innerHTML=rows.length?rows.map(b=>{const u=bookingUser(b.userId),e=bookingEvent(b.eventId);return `<tr><td><div class="person-cell"><span class="avatar">${initials(u?.name||"U")}</span><strong>${escapeHTML(u?.name||"Unknown user")}</strong></div></td><td>${escapeHTML(e?.title||"Deleted event")}</td><td>${formatDate(b.created)}</td><td><span class="status ${b.status.toLowerCase()}">${b.status}</span></td><td>${currentUser.role!=="attendee"&&b.status==="Pending"?`<button class="small-btn" data-confirm="${b.id}">Confirm</button> <button class="small-btn" data-cancel="${b.id}">Decline</button>`:currentUser.role==="attendee"&&b.status!=="Cancelled"?`<button class="small-btn" data-cancel="${b.id}">Cancel</button>`:"—"}</td></tr>`}).join(""):`<tr><td colspan="5" class="empty-state">No registrations found.</td></tr>`}
+["bookingSearch","bookingFilter"].forEach(id=>$(id).addEventListener(id==="bookingSearch"?"input":"change",renderBookings));
+$("bookingsTable").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const booking=db.bookings.find(x=>x.id===(b.dataset.confirm||b.dataset.cancel));if(!booking)return;if(b.dataset.confirm){booking.status="Confirmed";addActivity(`Registration confirmed for ${bookingUser(booking.userId)?.name||"attendee"}.`);notify("Registration confirmed.")}else{booking.status="Cancelled";addActivity(`A registration was cancelled for ${bookingEvent(booking.eventId)?.title||"an event"}.`);notify("Registration cancelled.")}saveDB();renderAll()});
+function renderUsers(){if(currentUser.role!=="admin")return; $("usersTable").innerHTML=db.users.map(u=>`<tr><td><div class="person-cell"><span class="avatar">${initials(u.name)}</span><strong>${escapeHTML(u.name)}</strong></div></td><td>${escapeHTML(u.email)}</td><td><span class="status">${roleLabel(u.role)}</span></td><td>${formatDate(u.joined)}</td></tr>`).join("")}
+function renderReports(){const events=visibleEvents(),bookings=currentUser.role==="attendee"?db.bookings.filter(b=>b.userId===currentUser.id):db.bookings.filter(b=>events.some(e=>e.id===b.eventId));$("reportStats").innerHTML=[statCard("Events",events.length,"Events in this workspace","◫"),statCard("Registrations",bookings.length,"Total booking requests","▤"),statCard("Confirmed",bookings.filter(b=>b.status==="Confirmed").length,"Approved registrations","✓"),statCard("Pending",bookings.filter(b=>b.status==="Pending").length,"Awaiting confirmation","◷")].join("");const counts=["Confirmed","Pending","Cancelled"].map(s=>({name:s,count:bookings.filter(b=>b.status===s).length})),max=Math.max(1,...counts.map(x=>x.count));$("reportBars").innerHTML=counts.map(x=>`<div class="bar-row"><span>${x.name}</span><div class="bar-track"><div class="bar-fill" style="width:${x.count/max*100}%"></div></div><strong>${x.count}</strong></div>`).join("");const cats={};events.forEach(e=>cats[e.category]=(cats[e.category]||0)+1);$("categoryReport").innerHTML=Object.keys(cats).length?Object.entries(cats).map(([name,count])=>`<div class="category-row"><span>${name}</span><strong>${count} event${count===1?"":"s"}</strong></div>`).join(""):`<div class="empty-state">No category data available.</div>`}
+$("exportReportBtn").addEventListener("click",()=>{const rows=[["Event","Category","Date","Capacity","Registrations","Confirmed","Pending"]];visibleEvents().forEach(e=>{const bs=db.bookings.filter(b=>b.eventId===e.id);rows.push([e.title,e.category,e.date,e.capacity,bs.length,bs.filter(b=>b.status==="Confirmed").length,bs.filter(b=>b.status==="Pending").length])});const csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="eventsphere-report.csv";a.click();URL.revokeObjectURL(url);notify("Report exported.")});
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>$(b.dataset.close).classList.add("hidden")));
+document.querySelectorAll(".modal-backdrop").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.add("hidden")}));
+/* Seed data is local to this browser. The demo accounts are listed on the sign-in screen. */
+
+</script>
+</body>
+</html>
